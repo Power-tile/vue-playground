@@ -11,7 +11,7 @@ let app = new Vue({
     },
     methods: {
         addMsg: function() {
-            if (this.inputValue !== "") {
+            if (this.inputValue.trim() !== "") {
                 this.msgList.push(this.inputValue);
                 this.inputValue = "";
             }
