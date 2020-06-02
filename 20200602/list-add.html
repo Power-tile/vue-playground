@@ -11,12 +11,14 @@
     </head>
     <body>
         <div id="app">
-            <div v-if="status === 0">I am shown</div>
-            <div v-else>I am shown instead</div>
-            <button v-on:click="status = (status === 0) ? 1 : 0">Toggle View</button> <br> <br>
-
-            {{ counter }} <br>
-            <button v-on:click="increment()">Click Me</button>
+            <ul>
+                <li v-for="(msg, index) in msgList" v-bind:key="index">
+                    {{ msg }}
+                </li>
+            </ul>
+            <br>
+            <input type="text" v-model="inputValue" placeholder="Enter Your Message Here...">
+            <button v-on:click="addMsg()">Add to list</button>
         </div>
 
         <!-- Vue Script Here -->
