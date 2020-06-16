@@ -14,15 +14,12 @@
                <li v-for="todo in list">
                    {{todo.text}}
                </li>
-               
             </ul>
             
             <p v-if='seen'>{{ message }}</p>
             <input v-model="message">
             <button v-on:click="add">Add to List</button>
-            
         </div>
         <script src="script.js"></script>
-
     </body>
 </html>
