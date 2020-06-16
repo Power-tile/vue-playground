@@ -10,9 +10,7 @@ let app = new Vue({
     },
     methods: {
         add: function () {
-            if (this.message == "" || this.message.trim() == "") {
-                this.message = ""
-            } else {
+            if (!(this.message == "" || this.message.trim() == "")) {
                 this.list.push({ text: this.message })
                 this.message = ""
             }
