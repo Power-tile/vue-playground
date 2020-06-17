@@ -3,7 +3,7 @@ let app = new Vue({
     data() {
         return {
             competencyData: {},
-            selectData: [],
+            selectData: {},
             minGrade: 60,
             maxGrade: 100,
         };
@@ -43,38 +43,45 @@ let app = new Vue({
                     }
                 ]
             };
-
-            self.competencyData.skillstrands.forEach((skill) => {
-                self.selectData.push({
-                    id: skill.id,
-                    level: 0,
-                });
-            });
-
+            
+            self.selectData = {
+                id: self.competencyData.id,
+                grades: self.competencyData.skillstrands.reduce((result, skill) => {
+                    result.push({
+                        id: skill.id,
+                        level: 0,
+                    });
+                    return result;
+                }, []),
+            }
         }, 1000);
     },
     methods: {
         setSelect: function(index, level) {
-            if (this.selectData[index].level === level) {
-                this.selectData[index].level = 0;
+            if (this.selectData.grades[index].level === level) {
+                this.selectData.grades[index].level = 0;
             } else {
-                this.selectData[index].level = level;
+                this.selectData.grades[index].level = level;
             }
         }
     },
     computed: {
         scoreCount: function() {
             let ret = 0;
-            this.selectData.forEach((skill) => {
-                ret += skill.level;
-            })
+            if (this.selectData.grades) {
+                this.selectData.grades.forEach((skill) => {
+                    ret += skill.level;
+                });
+            }
             return ret;
         },
         skillCount: function() {
             let ret = 0;
-            this.selectData.forEach((skill) => {
-                ret += skill.level > 0;
-            })
+            if (this.selectData.grades) {
+                this.selectData.grades.forEach((skill) => {
+                    ret += skill.level > 0;
+                });
+            }
             return ret;
         },
         avgScore: function() {

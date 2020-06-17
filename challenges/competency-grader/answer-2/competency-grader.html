@@ -17,7 +17,7 @@
                 <tr v-for="(skill, index) in competencyData.skillstrands">
                     <th style="text-align: left"> {{ skill.full_code }} {{ skill.competency_ename }} | {{ skill.competency_cname }} </th>
                     <td v-for="level in 4">
-                        <button :style="'background-color: ' + ((selectData[index].level === level) ? 'rgb(0, 123, 255); color: white' 
+                        <button :style="'background-color: ' + ((selectData.grades[index].level === level) ? 'rgb(0, 123, 255); color: white' 
                                                                                                     : 'rgb(239, 239, 239); color: black')"
                                 @click="setSelect(index, level)">
                             {{ level }}
