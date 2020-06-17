@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Competency Grader Demo
+        </title>
+
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" media="all" href="style.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h3> {{ competencyData.full_code }} {{ competencyData.competency_ename }} | {{ competencyData.competency_cname }} </h3>
+            <h4> Average Score: {{ avgScore }}; Grade: {{ grade }}%</h4>
+            <table>
+                <tr v-for="(skill, index) in competencyData.skillstrands">
+                    <th style="text-align: left"> {{ skill.full_code }} {{ skill.competency_ename }} | {{ skill.competency_cname }} </th>
+                    <td v-for="level in 4">
+                        <button :style="'background-color: ' + ((selectData[index].level === level) ? 'rgb(0, 123, 255); color: white' 
+                                                                                                    : 'rgb(239, 239, 239); color: black')"
+                                @click="setSelect(index, level)">
+                            {{ level }}
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Vue Script Here -->
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
