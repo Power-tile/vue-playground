@@ -14,4 +14,5 @@ In the ```challenges/``` folder, every challenge is in its own folder. ```demo.g
 
 Example:
 In the folder ```challenges/competency-grader/```, ```challenges/competency-grader/demo-1.gif``` is the first level challenge result; ```challenges/competency-grader/description.md``` contains the description, ```challenges/competency-grader/answer-1``` is the first level challenge answer code. To start the challenge, follow the instructions in ```description.md```. 
+
 Some challenges will contain a ```template/``` folder, for example, ```challenges/competency-grader/template/```. If this folder exist, clone this folder in the same directory and rename it with your branch name. The ```template``` folder contains the template/data needed to finish the challenge. If not, clone the ```playground-blank/``` folder into the challenge folder and rename it with your branch name, e.g. ```challenges/competency-grader/billy/```.
