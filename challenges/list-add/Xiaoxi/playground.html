@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Vue Playground
+        </title>
+
+        <meta charset="UTF-8">
+        <!-- <link rel="stylesheet" type="text/css" media="all" href="style.css"> -->
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="playground">
+            <!-- HTML goes here -->
+            <ul>
+                <li v-for="(item,index) in list">{{item}}</li>
+            </ul>
+            <br/>
+            <pr>
+                <input v-model="new_item" type="text" name="element" size = "25" placeholder = "Enter Your Message Here..."/>
+                <button @click="add_to_list">Add to list</button>
+            </pr>
+        </div>
+
+        <!-- Vue Script -->
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
