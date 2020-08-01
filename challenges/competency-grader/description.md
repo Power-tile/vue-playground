@@ -10,6 +10,8 @@ In this challenge, users will practice on ```localStorage``` and ```watch()```.
 
 ## Requirements
 ### Level 1
+The corresponding demo gif file is called ```demo-1.gif```.
+
 - Coders are to copy the folder ```template``` and rename the copied folder their own name. The HTML file and javascript file contain the basics for this challenge, including raw data, needed properties of the Vue instance, etc.
 - Data is directly assigned to the vue property ```competencyData```. No changes to raw data are allowed.
 - The webpage must contain a grader indicating the current grade for each skill strand. The grade may vary from 1 to 4. The corresponding button should turn blue if the user clicks on it. The user could also *deselect* or *cancel grading* the grade of the skill strand by reclicking on the current level button. This is shown in ```demo.gif```.
@@ -19,6 +21,8 @@ In this challenge, users will practice on ```localStorage``` and ```watch()```.
   Example: There are four skillstrands present, and three of them are leveled as ```[3, 2, 2]```. If these three skill strands are leveled ```[1, 1, 1]```, the grade is 60%; if these three skill strands are leveled ```[4, 4, 4]```, the grade is 100%. Therefore there are ```(4-1) * 3 = 9``` levels between the grade 60% and the grade 100%, meaning every level has a weight of ```(100% - 60%) / 9 ≈ 4.4%```. In this case, ```[3, 2, 2]``` possess an increment of ```(3-1) + (2-1) + (2-1) = 4``` levels compared to ```[1, 1, 1]```. Therefore the grade is ```4 * 4.4% + 60% ≈ 77.8%```.
 
 ### Level 2
+The corresponding demo gif file is called ```demo-2.gif```. This level is **based on Level 1**. Please first finish and pass the challenge of Level 1.
+
 - Refreshing the webpage or closing the webpage should not clear the previous level data of the page. Changing a competency should clear the previous data of the page.
 
 ## Suggestions

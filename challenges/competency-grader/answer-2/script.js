@@ -59,7 +59,6 @@ let app = new Vue({
             } else {
                 self.selectData = oldData;
             }
-
         }, 1000);
     },
     methods: {
