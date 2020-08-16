@@ -16,9 +16,9 @@
             <h4>Average Score: {{calculate[1]}}; Grade: {{calculate[0]}}</h4>
             <table>
                 <tr v-for="(skillstrand, index) in competencyData.skillstrands">
-                    <td>{{skillstrand.full_code + " " + skillstrand.competency_ename + " " + "| " + skillstrand.competency_cname}}</td>
+                    <td>{{skillstrand.full_code+" "+skillstrand.competency_ename+" "+"| "+skillstrand.competency_cname}}</td>
                     <td v-for="(item, index) in buttons">
-                        <button @click="getGrade(skillstrand, item)" :style="{ backgroundColor: backgroundColor[skillstrand.id.toString()+' '+item.toString()] }"> {{item}} </button>
+                        <button @click="getGrade(skillstrand, item)" :style="{ backgroundColor: backgroundColor[skillstrand.id.toString()+' '+item.toString()] }">{{item}}</button>
                     </td>
                 </tr>
             </table>
