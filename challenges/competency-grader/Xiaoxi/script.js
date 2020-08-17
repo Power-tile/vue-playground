@@ -102,12 +102,12 @@ let app = new Vue({
                     increment = (1-0.6)/((nonZero.length)*3);
                     step = nonZero.map(x => x-1).reduce(add);
                     average = nonZero.reduce(add)/nonZero.length;
-                    score[0] = Math.round((0.6+increment*step)*1000)/10+"%";
-                    score[1] = Math.round(average*10)/10;
-                    return score;
+                    score[0] = 0.6+increment*step;
+                    score[1] = average
                 }
-                return score;
             }
+            score[0] = Math.round(score[0]*1000)/10+"%";
+            score[1] = Math.round(score[1]*10)/10;
             return score;
         }
     }
