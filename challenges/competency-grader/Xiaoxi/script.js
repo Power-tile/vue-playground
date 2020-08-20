@@ -1,10 +1,8 @@
 let app = new Vue({
     el: "#app",
     data: {
-            competencyData: {},
-            buttons: [1,2,3,4],
-            competencyGrade: {},
-            backgroundColor: {},
+        competencyData: {},
+        competencyGrade: {},
     },
     mounted() {
         let self = this; // assigning vue instance to variable `self` to access in arrow function
@@ -42,40 +40,17 @@ let app = new Vue({
                 ]
             
             };
-            // initialize competency grade of each skill strand and background color of each button
-            for(i = 0; i<self.competencyData.skillstrands.length; i++) {
+            // initialize competency grade of each skill strand 
+            for(let i = 0; i<self.competencyData.skillstrands.length; i++) {
                 let key = self.competencyData.skillstrands[i].id;
-                let value = 0;
-                this.$set(this.competencyGrade, key, value)    
-                for(j = 1; j<5; j++) {
-                    let colorKey = key.toString()+" "+j.toString();
-                    self.backgroundColor[colorKey] = "#e7e7e7";
-                }       
+                self.$set(self.competencyGrade, key, 0)   
             }
         }, 1000);
     },
     methods: {
-        getGrade: function(skillstrand, grade) {
+        // change the value of grade
+        changeGrade: function(skillstrand, grade) {
             let key = skillstrand.id;
-            let colorKey = skillstrand.id.toString()+" "+grade.toString();
-            let allGrades = [1,2,3,4];
-            let otherKeys = [];
-            allGrades.forEach(element => {
-                if(element != grade) {
-                    otherKeys.push(key.toString()+" "+element.toString());
-                }
-            });
-            // set the background color of the selected button to blue and all other buttons of the same skill strand to grey
-            if(this.backgroundColor[colorKey] == "#e7e7e7") {
-                this.backgroundColor[colorKey] = "#008CBA";
-                otherKeys.forEach(element => {
-                    this.backgroundColor[element] = "#e7e7e7";
-                });
-            }
-            // set the background color to grey if a button is unselected
-            else{
-                this.backgroundColor[colorKey] = "#e7e7e7";
-            }
             if(grade != this.competencyGrade[skillstrand.id]) {
                 this.$set(this.competencyGrade, key, grade);
             }
@@ -85,30 +60,24 @@ let app = new Vue({
         },
     },
     computed: {
-        calculate: function() {
-            let score = [0,0];
-            let grades = Object.values(this.competencyGrade);
-            function add(x, y) {
-                return x + y;
-            }
-            if(grades.length != 0) {
-                let nonZero = [];
-                grades.forEach(element => {
-                    if(element != 0) {
-                        nonZero.push(element);
-                    }
-                });
-                if(nonZero.length != 0) {
-                    increment = (1-0.6)/((nonZero.length)*3);
-                    step = nonZero.map(x => x-1).reduce(add);
-                    average = nonZero.reduce(add)/nonZero.length;
-                    score[0] = 0.6+increment*step;
-                    score[1] = average
+        score: function() {
+            let grade = [0,0];
+            let points = Object.values(this.competencyGrade);
+            if(points.length !== 0) {
+                points = points.filter(item => item !==0)
+                if(points.length !== 0) {
+                    // calculate score and average
+                    let increment = (1-0.6)/((points.length)*3);
+                    let step = points.map(x => x-1).reduce((pre, curr) => pre+curr);
+                    let average = points.reduce((pre,curr) => pre+curr)/points.length;
+                    grade[0] = 0.6+increment*step;
+                    grade[1] = average
                 }
             }
-            score[0] = Math.round(score[0]*1000)/10+"%";
-            score[1] = Math.round(score[1]*10)/10;
-            return score;
+            // format the result
+            grade[0] = Math.round(grade[0]*1000)/10;
+            grade[1] = Math.round(grade[1]*10)/10;
+            return grade;
         }
     }
 });
